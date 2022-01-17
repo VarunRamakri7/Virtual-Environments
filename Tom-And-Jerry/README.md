@@ -3,4 +3,7 @@ Play as Jerry and trick Tom with the help of a decoy to get the cheese
 
 ### Controls
 - WASD to move Jerry (green spehere)
-- Click and drag mouse to ove decoy (blue sphere)
+- Mouse drag to move decoy (blue sphere)
+
+### Notes
+Tom (Red cylinder) will catch the mouse closest to him
