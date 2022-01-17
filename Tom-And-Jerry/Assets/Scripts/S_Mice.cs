@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class S_Mice : MonoBehaviour
 {
-    private bool isDecoy { get; set; }
+    private bool isDecoy;
+    public bool IsDecoy { get; set; }
 
     private Vector3 startPos;
+    public Vector3 StartPos { get; set; }
+
+    private bool canMove;
+    public bool CanMove { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -15,17 +20,17 @@ public class S_Mice : MonoBehaviour
         if (this.gameObject.tag == "decoy")
         {
             isDecoy = true; // Mark decoy
-
             this.gameObject.GetComponent<Renderer>().material.color = Color.blue; // Change color of decoy
         }
 
         startPos = this.gameObject.transform.position; // Get starting tranform
+        canMove = true; /// Enable movement
     }
 
     private void Update()
     {
         /// Move mouse with keyboard press
-        if (this.gameObject.tag == "mouse")
+        if (canMove && !isDecoy)
         {
             MoveMouse();
         }
@@ -38,6 +43,10 @@ public class S_Mice : MonoBehaviour
         {
             // Move to start location
             this.gameObject.transform.position = startPos;
+        }
+        else if (!isDecoy && other.gameObject.tag == "cheese")
+        {
+            canMove = false;
         }
     }
 
@@ -73,7 +82,7 @@ public class S_Mice : MonoBehaviour
     // Move decoy on Mouse drag
     void OnMouseDrag()
     {
-        if (this.gameObject.tag == "decoy")
+        if (isDecoy)
         {
             float distance_to_screen = Camera.main.WorldToScreenPoint(this.gameObject.transform.position).z;
             Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
