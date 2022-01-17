@@ -9,7 +9,15 @@ public class S_Cat : MonoBehaviour
     [SerializeField]
     private GameObject decoy;
 
+    private Vector3 startPos;
+    public Vector3 StartPos { get; set; }
+
     private float speed = 0.4f;
+
+    private void Start()
+    {
+        startPos = this.gameObject.transform.position; // Get starting tranform
+    }
 
     void FixedUpdate()
     {
