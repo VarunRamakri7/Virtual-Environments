@@ -12,6 +12,9 @@ public class S_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (gameManager == null)
+        {
+            gameManager = this;
+        }
     }
 }

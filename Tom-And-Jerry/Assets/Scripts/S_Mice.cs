@@ -31,13 +31,11 @@ public class S_Mice : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // Collide with Cheese or Cat
-        if (collision.gameObject.tag == "cat")
+        if (other.gameObject.tag == "cat")
         {
-            Debug.Log("Collision with Cat");
-
             // Move to start location
             this.gameObject.transform.position = startPos;
         }
