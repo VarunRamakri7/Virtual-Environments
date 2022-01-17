@@ -17,8 +17,8 @@ public class S_GameManager : MonoBehaviour
         if (other.gameObject.tag == "mouse")
         {
             // Disable movement
-            mouse.GetComponent<S_Mice>().CanMove = false;
-            decoy.GetComponent<S_Mice>().CanMove = false;
+            mouse.GetComponent<S_Mice>().SetMovementStatus(false);
+            decoy.GetComponent<S_Mice>().SetMovementStatus(false);
 
             canvas.SetActive(true); // Show game end UI
 
@@ -31,8 +31,8 @@ public class S_GameManager : MonoBehaviour
         Time.timeScale = 1; // Unpause Game
 
         // Enable movement
-        mouse.GetComponent<S_Mice>().CanMove = true;
-        decoy.GetComponent<S_Mice>().CanMove = true;
+        mouse.GetComponent<S_Mice>().SetMovementStatus(true);
+        decoy.GetComponent<S_Mice>().SetMovementStatus(true);
 
         // Reset positions
         mouse.transform.position = mouse.GetComponent<S_Mice>().StartPos;
