@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 1274506630}
   m_Layer: 0
   m_Name: Cheese
-  m_TagString: Untagged
+  m_TagString: cheese
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 1311160059}
   m_Layer: 0
   m_Name: Decoy
-  m_TagString: Untagged
+  m_TagString: decoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 1583067948}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 1654873432}
   m_Layer: 0
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
