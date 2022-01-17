@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class S_Mice : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class S_Mice : MonoBehaviour
     public Vector3 StartPos { get; set; }
 
     private bool canMove;
-    public bool CanMove { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +21,12 @@ public class S_Mice : MonoBehaviour
         }
 
         startPos = this.gameObject.transform.position; // Get starting tranform
-        canMove = true; /// Enable movement
+        canMove = true; // Enable movement
     }
 
     private void Update()
     {
-        /// Move mouse with keyboard press
+        // Move mouse with keyboard press
         if (canMove && !isDecoy)
         {
             MoveMouse();
@@ -42,7 +39,8 @@ public class S_Mice : MonoBehaviour
         if (other.gameObject.tag == "cat")
         {
             // Move to start location
-            this.gameObject.transform.position = startPos;
+            other.gameObject.transform.position = other.gameObject.GetComponent<S_Cat>().StartPos; // Move cat
+            this.gameObject.transform.position = startPos; // Move decoy
         }
         else if (!isDecoy && other.gameObject.tag == "cheese")
         {
@@ -88,6 +86,11 @@ public class S_Mice : MonoBehaviour
             Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
             this.gameObject.transform.position = new Vector3(pos_move.x, transform.position.y, pos_move.z);
         }
+    }
+
+    public void SetMovementStatus(bool status)
+    {
+        canMove = status;
     }
 
     #endregion
