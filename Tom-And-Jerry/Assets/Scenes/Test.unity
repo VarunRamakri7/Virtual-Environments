@@ -948,8 +948,8 @@ GameObject:
   - component: {fileID: 1311160061}
   - component: {fileID: 1311160060}
   - component: {fileID: 1311160059}
-  - component: {fileID: 1311160063}
   - component: {fileID: 1311160064}
+  - component: {fileID: 1311160063}
   m_Layer: 0
   m_Name: Decoy
   m_TagString: decoy
@@ -1279,8 +1279,8 @@ GameObject:
   - component: {fileID: 1654873434}
   - component: {fileID: 1654873433}
   - component: {fileID: 1654873432}
-  - component: {fileID: 1654873436}
   - component: {fileID: 1654873437}
+  - component: {fileID: 1654873436}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: mouse
