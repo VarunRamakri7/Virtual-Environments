@@ -4,17 +4,36 @@ using UnityEngine;
 
 public class S_GameManager : MonoBehaviour
 {
-    public static S_GameManager gameManager;
+    [SerializeField]
+    private GameObject canvas;
+    [SerializeField]
+    private GameObject mouse;
+    [SerializeField]
+    private GameObject decoy;
+    [SerializeField]
+    private GameObject cat;
 
-    private bool mouseCaught { get; set; }
-    private bool cheeseFound { get; set; }
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        if (gameManager == null)
+        // End Game
+        if (other.gameObject.tag == "mouse")
         {
-            gameManager = this;
+            other.GetComponent<S_Mice>().CanMove = false; // Disable movement
+
+            Time.timeScale = 0; // Pause Game
+            canvas.SetActive(true); // Show game end UI
         }
+    }
+
+    public void Replay()
+    {
+        // Reset positions
+        mouse.transform.position = mouse.GetComponent<S_Mice>().StartPos;
+        decoy.transform.position = decoy.GetComponent<S_Mice>().StartPos;
+        cat.transform.position = cat.GetComponent<S_Cat>().StartPos;
+
+        mouse.GetComponent<S_Mice>().CanMove = true; // Enable movement
+
+        Time.timeScale = 1; // Unpause Game
     }
 }
