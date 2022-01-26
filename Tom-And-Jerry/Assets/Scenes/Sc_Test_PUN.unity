@@ -1103,7 +1103,6 @@ MonoBehaviour:
   cat: {fileID: 1611924112}
   waitBanner: {fileID: 311501984}
   isMultiplayer: 1
-  canPlay: 0
 --- !u!65 &1494675565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1452,6 +1451,11 @@ PrefabInstance:
       propertyPath: punManager
       value: 
       objectReference: {fileID: 297840224}
+    - target: {fileID: 5823467465138673591, guid: a61f52f65cfb6c94fae53671a2ca4f0f,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1494675564}
     - target: {fileID: 5823467465138673592, guid: a61f52f65cfb6c94fae53671a2ca4f0f,
         type: 3}
       propertyPath: m_RootOrder
@@ -1537,6 +1541,11 @@ PrefabInstance:
       propertyPath: punManager
       value: 
       objectReference: {fileID: 297840224}
+    - target: {fileID: 5823467465138673591, guid: a61f52f65cfb6c94fae53671a2ca4f0f,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1494675564}
     - target: {fileID: 5823467465138673592, guid: a61f52f65cfb6c94fae53671a2ca4f0f,
         type: 3}
       propertyPath: m_RootOrder
