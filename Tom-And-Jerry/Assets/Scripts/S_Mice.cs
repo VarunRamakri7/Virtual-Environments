@@ -2,6 +2,9 @@
 
 public class S_Mice : MonoBehaviour
 {
+    [SerializeField]
+    private S_PUNManager punManager;
+
     private bool isDecoy;
     public bool IsDecoy { get; set; }
 
@@ -22,6 +25,8 @@ public class S_Mice : MonoBehaviour
 
         startPos = this.gameObject.transform.position; // Get starting tranform
         canMove = true; // Enable movement
+
+        punManager.Connect(); // Connect to Network
     }
 
     private void Update()

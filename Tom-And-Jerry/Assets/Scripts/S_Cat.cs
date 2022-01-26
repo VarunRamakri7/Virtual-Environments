@@ -6,6 +6,8 @@ public class S_Cat : MonoBehaviour
     private GameObject mouse;
     [SerializeField]
     private GameObject decoy;
+    [SerializeField]
+    private S_GameManager gameManager;
 
     private Vector3 startPos;
     public Vector3 StartPos { get; set; }
@@ -19,15 +21,18 @@ public class S_Cat : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Calculate distance between cat and mice
-        float distToMouse = Vector3.Distance(this.gameObject.transform.position, mouse.transform.position);
-        float distToDecoy = Vector3.Distance(this.gameObject.transform.position, decoy.transform.position);
+        if (gameManager.canPlay)
+        {
+            // Calculate distance between cat and mice
+            float distToMouse = Vector3.Distance(this.gameObject.transform.position, mouse.transform.position);
+            float distToDecoy = Vector3.Distance(this.gameObject.transform.position, decoy.transform.position);
 
-        GameObject obj = (distToDecoy <= distToMouse) ? decoy : mouse; // Get closest mouse
+            GameObject obj = (distToDecoy <= distToMouse) ? decoy : mouse; // Get closest mouse
 
-        // Move cat towards  closest mouse
-        Vector3 dir = obj.transform.position - this.gameObject.transform.position; // Calculate direction vector
-        dir = dir.normalized; // Normalize resultant vector to unit Vector 
-        this.gameObject.transform.position += dir * Time.deltaTime * speed; // Move in the direction of the direction vector every frame
+            // Move cat towards  closest mouse
+            Vector3 dir = obj.transform.position - this.gameObject.transform.position; // Calculate direction vector
+            dir = dir.normalized; // Normalize resultant vector to unit Vector 
+            this.gameObject.transform.position += dir * Time.deltaTime * speed; // Move in the direction of the direction vector every frame
+        }
     }
 }
