@@ -4,6 +4,8 @@ public class S_Mice : MonoBehaviour
 {
     [SerializeField]
     private S_PUNManager punManager;
+    [SerializeField]
+    private S_GameManager gameManager;
 
     private bool isDecoy;
     public bool IsDecoy { get; set; }
@@ -26,13 +28,16 @@ public class S_Mice : MonoBehaviour
         startPos = this.gameObject.transform.position; // Get starting tranform
         canMove = true; // Enable movement
 
-        punManager.Connect(); // Connect to Network
+        if (gameManager.isMultiplayer)
+        {
+            punManager.Connect(); // Connect to Network
+        }
     }
 
     private void Update()
     {
         // Move mouse with keyboard press
-        if (canMove && !isDecoy)
+        if (canMove && (!isDecoy || gameManager.isMultiplayer))
         {
             MoveMouse();
         }
@@ -85,7 +90,7 @@ public class S_Mice : MonoBehaviour
     // Move decoy on Mouse drag
     void OnMouseDrag()
     {
-        if (isDecoy)
+        if (!gameManager.isMultiplayer && isDecoy)
         {
             float distance_to_screen = Camera.main.WorldToScreenPoint(this.gameObject.transform.position).z;
             Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
