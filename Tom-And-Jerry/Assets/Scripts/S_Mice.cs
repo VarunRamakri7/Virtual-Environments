@@ -28,7 +28,7 @@ public class S_Mice : MonoBehaviour
         startPos = this.gameObject.transform.position; // Get starting tranform
         canMove = true; // Enable movement
 
-        if (gameManager.isMultiplayer)
+        if (gameManager.IsMultiplayer())
         {
             punManager.Connect(); // Connect to Network
         }
@@ -37,7 +37,7 @@ public class S_Mice : MonoBehaviour
     private void Update()
     {
         // Move mouse with keyboard press
-        if (canMove && (!isDecoy || gameManager.isMultiplayer))
+        if (canMove && (!isDecoy || gameManager.IsMultiplayer()))
         {
             MoveMouse();
         }
@@ -90,7 +90,7 @@ public class S_Mice : MonoBehaviour
     // Move decoy on Mouse drag
     void OnMouseDrag()
     {
-        if (!gameManager.isMultiplayer && isDecoy)
+        if (!gameManager.IsMultiplayer() && isDecoy)
         {
             float distance_to_screen = Camera.main.WorldToScreenPoint(this.gameObject.transform.position).z;
             Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));

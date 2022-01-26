@@ -21,7 +21,7 @@ public class S_Cat : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gameManager.canPlay)
+        if (gameManager.CanPlay())
         {
             // Calculate distance between cat and mice
             float distToMouse = Vector3.Distance(this.gameObject.transform.position, mouse.transform.position);
