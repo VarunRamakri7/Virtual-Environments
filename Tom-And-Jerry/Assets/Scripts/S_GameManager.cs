@@ -15,8 +15,9 @@ public class S_GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject waitBanner;
 
-    public bool isMultiplayer = false;
-    public bool canPlay = false;
+    [SerializeField]
+    private bool isMultiplayer = false; 
+    private bool canPlay = false;
 
     private void Start()
     {
@@ -107,5 +108,18 @@ public class S_GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-#endregion
+    #endregion
+
+    #region Getters
+
+    public bool IsMultiplayer()
+    {
+        return isMultiplayer;
+    }
+
+    public bool CanPlay()
+    {
+        return canPlay;
+    }
+    #endregion
 }
