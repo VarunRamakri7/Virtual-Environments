@@ -14,6 +14,7 @@ public class S_PUNManager : MonoBehaviourPunCallbacks
 
     private string gameVersion = "1";
     private bool isConnecting;
+    private const string roomName = "tom-and-jerry-room";
 
     void Awake()
     {
@@ -30,6 +31,9 @@ public class S_PUNManager : MonoBehaviourPunCallbacks
         }
 
         // Connect();
+
+        // Create room for game
+        // PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
     }
 
     /// - If already connected, we attempt joining a random room
@@ -38,7 +42,8 @@ public class S_PUNManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.JoinRandomRoom();
+            //PhotonNetwork.JoinRandomRoom();
+            PhotonNetwork.JoinRoom(roomName);
         }
         else
         {
@@ -58,7 +63,8 @@ public class S_PUNManager : MonoBehaviourPunCallbacks
 
         if (isConnecting)
         {
-            PhotonNetwork.JoinRandomRoom();
+            // PhotonNetwork.JoinRandomRoom();
+            PhotonNetwork.JoinRoom(roomName);
         }
     }
 
@@ -67,6 +73,18 @@ public class S_PUNManager : MonoBehaviourPunCallbacks
         Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
 
         isConnecting = false;
+    }
+
+    public override void OnCreatedRoom()
+    {
+        Debug.Log("OnCreatedRoom() was called by PUN");
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("OnCreatedRoomFailed() called by PUN.");
+
+        Debug.Log("Message: " + message);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -82,5 +100,15 @@ public class S_PUNManager : MonoBehaviourPunCallbacks
         Debug.Log("Joined PlayerCount: " + PhotonNetwork.CurrentRoom.PlayerCount);
     }
 
-#endregion
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("OnJoinedRoomFailed() called by PUN.");
+
+        Debug.Log("Message: " + message);
+
+        // Create room for game
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
+    }
+
+    #endregion
 }
